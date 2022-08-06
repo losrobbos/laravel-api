@@ -29,5 +29,5 @@ Accept: application/json
 }
 
 ### Animal DELETE
-DELETE {{API_URL}}/api/animals/7
+DELETE {{API_URL}}/api/animals/8
 Accept: application/json
