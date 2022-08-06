@@ -1,0 +1,32 @@
+@API_URL = http://127.0.0.1:8000
+
+### HOME
+GET {{API_URL}}
+
+### Animals All
+GET {{API_URL}}/api/animals
+
+### Animal single
+GET {{API_URL}}/api/animals/5
+
+
+### Animal NEW
+POST {{API_URL}}/api/animals
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "greedy"
+}
+
+### Animal UPDATE
+PATCH  {{API_URL}}/api/animals/3
+Content-Type: application/json
+
+{
+  "name": "pingy"
+}
+
+### Animal DELETE
+DELETE {{API_URL}}/api/animals/5
+Accept: application/json
