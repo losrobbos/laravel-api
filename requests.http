@@ -7,7 +7,7 @@ GET {{API_URL}}
 GET {{API_URL}}/api/animals
 
 ### Animal single
-GET {{API_URL}}/api/animals/5
+GET {{API_URL}}/api/animals/9
 
 
 ### Animal NEW
@@ -16,16 +16,16 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "greedy"
+  "name": "koalaaa"
 }
 
 ### Animal UPDATE
-PATCH  {{API_URL}}/api/animals/3
+PATCH  {{API_URL}}/api/animals/9
 Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "pengy"
+  "name": "koa"
 }
 
 ### Animal DELETE

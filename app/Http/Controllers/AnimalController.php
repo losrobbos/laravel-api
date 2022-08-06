@@ -15,7 +15,7 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $animals = DB::select('select * from animals');
+        $animals = Animal::all();
         return $animals;
     }
 
@@ -27,14 +27,15 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|max:10',
         ]);
 
         $body = $request->all();
 
-        $animals = DB::insert('insert into animals (name) values (?)', [$body["name"]]);
-        return $animals;
+        $animal = new Animal($body);
+        $animal->save();
+        return $animal;
     }
 
     /**
@@ -45,7 +46,7 @@ class AnimalController extends Controller
      */
     public function show($id)
     {
-        $animal = DB::select('select * from animals where id = (?)', [$id]);
+        $animal = Animal::find($id);
         return $animal;
     }
 
@@ -58,20 +59,14 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|max:10',
         ]);
         
-        $name = $request->input("name");
-        if($name) {
-            $animalUpdated = DB::update("update animals set name = (?) where id = (?)", [
-                $name, $id
-            ]);
-            return $animalUpdated;
-        }
-        else {
-            return "Animal not found";
-        }
+        $body = $request->all();
+        $animal = Animal::find($id);
+        $animal->fill($body)->save(); // overwrite with body fields
+        return $animal;
     }
 
     /**
@@ -82,7 +77,10 @@ class AnimalController extends Controller
      */
     public function destroy($id)
     {
-        $animalDeleted = DB::delete("delete from animals WHERE id = (?)", [$id]);
-        return $animalDeleted;
+        $animalToDelete = Animal::find($id);
+        if($animalToDelete) {
+            $animalToDelete->delete();
+        }
+        return $animalToDelete;
     }
 }
