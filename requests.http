@@ -22,11 +22,12 @@ Content-Type: application/json
 ### Animal UPDATE
 PATCH  {{API_URL}}/api/animals/3
 Content-Type: application/json
+Accept: application/json
 
 {
-  "name": "pingy"
+  "name": "pengy"
 }
 
 ### Animal DELETE
-DELETE {{API_URL}}/api/animals/5
+DELETE {{API_URL}}/api/animals/7
 Accept: application/json

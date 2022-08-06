@@ -27,6 +27,10 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:10',
+        ]);
+
         $body = $request->all();
 
         $animals = DB::insert('insert into animals (name) values (?)', [$body["name"]]);
@@ -54,10 +58,14 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        if($data["name"]) {
+        $validated = $request->validate([
+            'name' => 'required|max:10',
+        ]);
+        
+        $name = $request->input("name");
+        if($name) {
             $animalUpdated = DB::update("update animals set name = (?) where id = (?)", [
-                $data["name"], $id
+                $name, $id
             ]);
             return $animalUpdated;
         }
