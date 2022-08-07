@@ -1,4 +1,5 @@
 @API_URL = http://127.0.0.1:8000
+# @API_URL=http://laravel-rob-demo.herokuapp.com
 
 ### HOME
 GET {{API_URL}}
@@ -7,7 +8,7 @@ GET {{API_URL}}
 GET {{API_URL}}/api/animals
 
 ### Animal single
-GET {{API_URL}}/api/animals/9
+GET {{API_URL}}/api/animals/4
 
 
 ### Animal NEW
@@ -16,11 +17,12 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "koalaaa"
+  "name": "giraffe",
+  "age": "13"
 }
 
 ### Animal UPDATE
-PATCH  {{API_URL}}/api/animals/9
+PATCH  {{API_URL}}/api/animals/10
 Content-Type: application/json
 Accept: application/json
 
@@ -29,5 +31,5 @@ Accept: application/json
 }
 
 ### Animal DELETE
-DELETE {{API_URL}}/api/animals/8
+DELETE {{API_URL}}/api/animals/10
 Accept: application/json

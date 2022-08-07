@@ -10,10 +10,10 @@ class Animal extends Model
     use HasFactory;
 
     protected $table = "animals";
-    public $timestamps = false;
     
     protected $fillable = [
         'name',
+        'age'
     ];
 
 }
