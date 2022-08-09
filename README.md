@@ -25,8 +25,7 @@
 
 ## Preparing for deployment
 
-On Heroku you can deploy PHP pages and also get a Postgres SQL database for free.
-
+On Heroku you can deploy PHP pages for free
 
 - Login on heroku.com
   - Create an account if you don't have one so far
@@ -53,7 +52,7 @@ On Heroku you can deploy PHP pages and also get a Postgres SQL database for free
 - DONE!
 
 
-### Use free Postres database on Heroku
+### Use free Postgres database on Heroku
 
 The freesqldatabase has a limit of 5 MB. It is ideal for local development, but not that much for usage in production.
 
