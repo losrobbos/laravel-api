@@ -17,8 +17,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "giraffe",
-  "age": "13"
+  "name": "koala",
+  "age": 7
 }
 
 ### Animal UPDATE
