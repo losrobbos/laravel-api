@@ -1,7 +1,7 @@
 @API_URL = http://127.0.0.1:8000
 # @API_URL=http://laravel-rob-demo.herokuapp.com
 
-@TOKEN = 1|NKo00kwBuSWyXrSQu9r0RdjUGKDH2RljpwLcZYBV
+@TOKEN = 3|0IHwcKzPHMPRG79JZKFGzzxynGIR5aeAvmktynW5
 
 ### HOME
 GET {{API_URL}}
@@ -25,8 +25,13 @@ POST {{API_URL}}/api/auth/login
 Accept: application/json
 Content-Type: application/json
 
+{
+  "email": "rob@rob.com",
+  "password": "rob123"
+}
+
 ### LOGOUT
-POST {{API_URL}}/api/auth/logout
+GET {{API_URL}}/api/auth/logout
 Accept: application/json
 Content-Type: application/json
 
