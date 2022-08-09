@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -13,13 +14,21 @@ class AuthController extends Controller
     {
         // $rules = User::$rules;
         // $fields = $req->validate($rules);
-        $body = $req->all();
+        $body = $req->only(['name', 'email', 'password']);
+
+        // user already exists? reject!
+        $userFound = User::where("email", $body["email"])->first();
+
+        if($userFound) {
+            return response("User already exists!", 400);
+        }
 
         // hash password
         $body['password'] = bcrypt($body['password']); 
         $userNew = User::create($body);
 
-        $token = $userNew->createToken('holySecret')->plainTextToken;
+        $tokenSecret = env('TOKEN_SECRET');
+        $token = $userNew->createToken($tokenSecret)->plainTextToken;
 
         $response = [
             "user" => $userNew,
@@ -31,29 +40,22 @@ class AuthController extends Controller
 
     public function login(Request $req)
     {
-        $body = $req->all();
+        $creds = $req->only(['email', 'password']);
 
-        // hash password
-        $userFound = User::where("email", $body["email"])->first();
-        // $userFound->makeVisible("password");
+        $userFound = Auth::once($creds);
 
-        // not found? => reject
         if(!$userFound) {
             return response([
                 'message' => "User not found"
             ], 400);
         }
-        // pws dont match? => reject
-        if(!Hash::check($body["password"], $userFound->password)) {
-            return response([
-                'message' => "Wrong creds"
-            ], 400);
-        }
 
-        $token = $userFound->createToken('holySecret')->plainTextToken;
+        $user = $req->user();
+        $tokenSecret = env('TOKEN_SECRET');
+        $token = $user->createToken($tokenSecret)->plainTextToken;
 
         $response = [
-            "user" => $userFound,
+            "user" => $user,
             "token" => $token
         ];
 
@@ -64,8 +66,9 @@ class AuthController extends Controller
     {
         // clear tokens associated with current user in database
         $req->user()->tokens()->delete();
-        return "Logged out";
-        // auth()->user()->tokens()->delete();
+        return response([
+            "message" => "Logged out"
+        ]);
     }
 
 }
