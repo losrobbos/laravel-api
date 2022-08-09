@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,11 @@ Route::resource('animals', AnimalController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('/auth/signup', 'signup');
+    Route::post('/auth/login', 'login');
+    Route::middleware('auth:sanctum')->get('/auth/logout', 'logout');
 });

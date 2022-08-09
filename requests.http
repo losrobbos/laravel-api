@@ -1,8 +1,43 @@
 @API_URL = http://127.0.0.1:8000
 # @API_URL=http://laravel-rob-demo.herokuapp.com
 
+@TOKEN = 1|NKo00kwBuSWyXrSQu9r0RdjUGKDH2RljpwLcZYBV
+
 ### HOME
 GET {{API_URL}}
+
+
+# AUTH ROUTES
+
+### SIGNUP
+POST {{API_URL}}/api/auth/signup
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Roberto",
+  "email": "rob@rob.com",
+  "password": "rob123"
+}
+
+### LOGIN
+POST {{API_URL}}/api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+### LOGOUT
+POST {{API_URL}}/api/auth/logout
+Accept: application/json
+Content-Type: application/json
+
+
+### Protected Route
+GET {{API_URL}}/api/user
+Accept: application/json
+Authorization: Bearer {{TOKEN}}
+
+
+# ANIMAL ROUTES
 
 ### Animals All
 GET {{API_URL}}/api/animals
