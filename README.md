@@ -82,10 +82,6 @@ The freesqldatabase has a limit of 5 MB. It is ideal for local development, but 
 - Request File for Route Testing
 - Deployment to Heroku using Procfile
 - Database Table Setup / Migration
-
-OPEN
 - Signup with password hashing
-- Login with JWT
-- Route Protection with JWT
-- Database Table Extension with Migration
-- Custom Exception handling
+- Login with API Token creation
+- Route Protection with Token verification
