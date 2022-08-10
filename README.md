@@ -1,5 +1,18 @@
 # PHP Laravel API Template
 
+## Concepts used in Template
+
+- Routing
+- Controller
+- Database Connection
+- Database Table setup (Migration)
+- CRUD against a Database Resource (Create-Read-Update-Delete)
+- Request File (requests.http) for testing your Routes
+- Signup with password hashing
+- Login with API Token creation
+- Route Protection with Token verification
+- Deployment to Heroku using Procfile
+
 ## Configure it
 
 - copy the .env.sample file to an .env file
@@ -73,15 +86,3 @@ The freesqldatabase has a limit of 5 MB. It is ideal for local development, but 
 - Now execute a POST request to /api/animals to create a new animal into the postgres DB
 - Check the /api/animals route in the browser if it worked!
 
-## Concepts used in Template
-
-- Routing
-- Controller
-- Database Connection
-- CRUD against Database Resource (Create-Read-Update-Delete)
-- Request File for Route Testing
-- Deployment to Heroku using Procfile
-- Database Table Setup / Migration
-- Signup with password hashing
-- Login with API Token creation
-- Route Protection with Token verification
