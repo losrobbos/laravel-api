@@ -40,6 +40,8 @@ On Heroku you can deploy PHP pages for free
     - DB_DATABASE
     - DB_USERNAME
     - DB_PASSWORD
+  - Also create a config var "TOKEN_SECRET" and give it some value, e.g. yourHolySecret, ideally with some special chars in it
+    - the TOKEN_SECRET will get used to create and verify your login tokens
 - Import your code from GitHub
   - Go to tab "Deploy"
   - Deployment method: Choose "GitHub"
