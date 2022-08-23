@@ -4,7 +4,7 @@
 
 - PHP 9
 - PHP Modules: php-xml, php-curl, php-zip, php-pgsql, php-mysql
-- Composer for creating web projects and install packages
+- PHP "Composer" for creating web projects and install packages
 
 ## Concepts used in Template
 
